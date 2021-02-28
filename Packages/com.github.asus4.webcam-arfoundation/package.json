@@ -1,0 +1,24 @@
+{
+  "name": "com.github.asus4.webcam-arfoundation",
+  "displayName": "Webcam AR Foundation",
+  "author": "Koki Ibukuro",
+  "dependencies": {
+    "com.unity.mathematics": "1.2.1",
+    "com.unity.xr.arfoundation": "4.1.5",
+    "com.unity.xr.arkit": "4.1.5",
+    "com.unity.xr.arkit-face-tracking": "4.1.5",
+    "com.unity.xr.arsubsystems": "4.1.5",
+    "com.unity.xr.legacyinputhelpers": "2.0.8",
+    "jp.keijiro.klak.ndi": "1.0.12"
+  },
+  "description": "AR foundation devkit",
+  "keywords": [
+    "unity"
+  ],
+  "license": "SEE LICENSE.md",
+  "unity": "2019.2",
+  "unityRelease": "0f1",
+  "version": "0.1.0",
+  "type": "library",
+  "hideInEditor": false
+}

@@ -1,0 +1,43 @@
+{
+    "name": "ARKitStream",
+    "references": [
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Lightweight.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.Mathematics",
+        "Unity.XR.ARFoundation",
+        "Unity.XR.ARSubsystems",
+        "Unity.XR.ARKit",
+        "Unity.XR.ARKit.FaceTracking",
+        "Unity.XR.Management",
+        "Unity.XR.Management.Editor",
+        "UnityEngine.XR.LegacyInputHelpers",
+        "UnityEngine.SpatialTracking",
+        "Klak.Ndi.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.lightweight",
+            "expression": "[5.7.2,7.0.0)",
+            "define": "MODULE_LWRP_ENABLED"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "7.0.0",
+            "define": "MODULE_URP_ENABLED"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "0.9.6-preview",
+            "define": "UNITY_INPUT_SYSTEM"
+        }
+    ],
+    "noEngineReferences": false
+}
