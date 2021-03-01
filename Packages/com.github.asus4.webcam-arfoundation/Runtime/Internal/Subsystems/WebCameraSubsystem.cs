@@ -165,7 +165,11 @@ namespace WebcamARFoundation.Internal
                     // | XRCameraFrameProperties.ProjectionMatrix
                     | XRCameraFrameProperties.DisplayMatrix;
 
-                
+
+                Matrix4x4 displayMatrix = GetDisplayTransform(
+                    (float)webcam.width / (float)webcam.height,
+                    (float)Screen.width / (float)Screen.height
+                );
 
                 cameraFrame = (XRCameraFrame)new CameraFrame()
                 {
@@ -176,7 +180,7 @@ namespace WebcamARFoundation.Internal
                     // projectionMatrix = remoteFrame.projectionMatrix,
                     projectionMatrix = Matrix4x4.identity,
                     // displayMatrix = remoteFrame.displayMatrix,
-                    displayMatrix = Matrix4x4.identity,
+                    displayMatrix = displayMatrix,
                     trackingState = TrackingState.Tracking,
                     nativePtr = new IntPtr(0),
                     properties = properties,
@@ -225,6 +229,30 @@ namespace WebcamARFoundation.Internal
                 arr[0] = new TextureDescriptor(webcam, _TEXTURE_MAIN);
 
                 return arr;
+            }
+
+
+            private static readonly Matrix4x4 PUSH_MATRIX = Matrix4x4.Translate(new Vector3(0.5f, 0.5f, 0));
+            private static readonly Matrix4x4 POP_MATRIX = Matrix4x4.Translate(new Vector3(-0.5f, -0.5f, 0));
+            private static Matrix4x4 GetDisplayTransform(float srcAspect, float dstAspect)
+            {
+                Vector3 scale;
+                if (srcAspect > dstAspect)
+                {
+                    float s = dstAspect / srcAspect;
+                    scale = new Vector3(s, 1, 1);
+                }
+                else
+                {
+                    float s = srcAspect / dstAspect;
+                    scale = new Vector3(1, s, 1);
+                }
+                Matrix4x4 trs = Matrix4x4.TRS(
+                    Vector3.zero,
+                    Quaternion.identity,
+                    scale
+                );
+                return PUSH_MATRIX * trs * POP_MATRIX;
             }
 
         }
