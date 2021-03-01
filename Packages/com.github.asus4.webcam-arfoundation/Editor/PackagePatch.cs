@@ -6,7 +6,7 @@ using UnityEditor;
 
 using Debug = UnityEngine.Debug;
 
-namespace ARKitStream
+namespace WebcamARFoundation
 {
     [InitializeOnLoad]
     public static class PackagePatch
@@ -14,19 +14,13 @@ namespace ARKitStream
         static PackagePatch()
         {
             string packagePath = Path.GetFullPath("Packages/com.unity.xr.arfoundation/Runtime/AR/");
-            string toolsPath = Path.GetFullPath("Packages/com.koki-ibukuro.arkitstream/Tools/");
-            string scriptPath = Path.GetFullPath("Packages/com.koki-ibukuro.arkitstream/Tools/apply_patch.sh");
+            string toolsPath = Path.GetFullPath("Packages/com.github.asus4.webcam-arfoundation/Tools/");
+            string scriptPath = Path.GetFullPath("Packages/com.github.asus4.webcam-arfoundation/Tools/apply_patch.sh");
 
             RunCommand(
                 scriptPath,
                 Path.Combine(packagePath, "ARCameraBackground.cs"),
                 Path.Combine(toolsPath, "ARCameraBackground.cs.patch")
-            );
-
-            RunCommand(
-                scriptPath,
-                Path.Combine(packagePath, "ARFace.cs"),
-                Path.Combine(toolsPath, "ARFace.cs.patch")
             );
         }
 

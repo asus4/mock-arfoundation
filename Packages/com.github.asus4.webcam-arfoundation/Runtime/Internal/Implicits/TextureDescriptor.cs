@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.ARSubsystems;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     /// <summary>
     /// HACK: Need the unsafe struct cast
@@ -22,13 +22,20 @@ namespace ARKitStream.Internal
         public int depth;
         public TextureDimension dimension;
 
-        public TextureDescriptor(Texture2D tex, int propertyNameId)
+        public TextureDescriptor(Texture tex, int propertyNameId)
         {
             nativeTexture = tex.GetNativeTexturePtr();
             width = tex.width;
             height = tex.height;
             mipmapCount = tex.mipmapCount;
-            format = tex.format;
+            if (tex is Texture2D)
+            {
+                format = ((Texture2D)tex).format;
+            }
+            else
+            {
+                format = TextureFormat.ARGB32;
+            }
             this.propertyNameId = propertyNameId;
             depth = 0;
             dimension = tex.dimension;

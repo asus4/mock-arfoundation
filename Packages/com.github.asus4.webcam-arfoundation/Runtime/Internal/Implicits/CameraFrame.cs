@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.ARSubsystems;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     [StructLayout(LayoutKind.Sequential)]
     public struct CameraFrame : IEquatable<CameraFrame>

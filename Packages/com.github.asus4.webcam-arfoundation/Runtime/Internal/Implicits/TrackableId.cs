@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]

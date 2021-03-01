@@ -4,7 +4,7 @@ using Unity.Collections;
 using UnityEngine.XR.ARSubsystems;
 using UnityTrackableId = UnityEngine.XR.ARSubsystems.TrackableId;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     public class TrackableChangesModifier<T> : IDisposable where T : struct, ITrackable
     {

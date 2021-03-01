@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Mathematics;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     public static class QuaternionExtension
     {

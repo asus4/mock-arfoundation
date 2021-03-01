@@ -2,7 +2,7 @@
 using UnityEngine;
 using Unity.Mathematics;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     [Serializable]
     public struct Pose : IEquatable<Pose>,

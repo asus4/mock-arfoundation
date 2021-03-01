@@ -5,7 +5,7 @@ using UnityEngine.XR.ARSubsystems;
 using Unity.Mathematics;
 
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]

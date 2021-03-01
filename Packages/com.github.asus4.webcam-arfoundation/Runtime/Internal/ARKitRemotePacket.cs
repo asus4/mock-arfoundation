@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using Unity.Mathematics;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     [Serializable]
     public partial class ARKitRemotePacket

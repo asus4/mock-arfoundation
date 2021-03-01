@@ -1,7 +1,7 @@
 ﻿using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 
-namespace ARKitStream.Internal
+namespace WebcamARFoundation.Internal
 {
     public static class NativeArrayExtension
     {
