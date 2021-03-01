@@ -31,7 +31,7 @@ namespace WebcamARFoundation
             // CreateSubsystem<XRInputSubsystemDescriptor, XRInputSubsystem>(s_InputSubsystemDescriptors, "ARKit-Input");
 #endif
 
-            Debug.Log("WebcamARFoundation Initialize");
+            // Debug.Log("WebcamARFoundation Initialize");
 
             var sessionSubsystem = GetLoadedSubsystem<XRSessionSubsystem>();
             if (sessionSubsystem == null)
@@ -64,7 +64,7 @@ namespace WebcamARFoundation
             DestroySubsystem<XRSessionSubsystem>();
 #endif
 
-            Debug.Log("WebcamARFoundation Deinitialize");
+            // Debug.Log("WebcamARFoundation Deinitialize");
             return base.Deinitialize();
         }
     }

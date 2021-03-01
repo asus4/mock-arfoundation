@@ -112,7 +112,6 @@ namespace WebcamARFoundation.Internal
                 }
 
                 var setting = WebcamARFoundationSetting.Instance;
-                Debug.Log(setting);
                 webcam = setting.GetWebCamTexture();
                 webcam.Play();
             }
@@ -135,7 +134,10 @@ namespace WebcamARFoundation.Internal
             public override Feature requestedCamera
             {
                 get => Feature.AnyCamera;
-                set => Debug.Log($"requestedCamera: {value}");
+                set
+                {
+                    // Debug.Log($"requestedCamera: {value}")
+                }
             }
 
             public override bool TryGetFrame(XRCameraParams cameraParams, out XRCameraFrame cameraFrame)
@@ -192,14 +194,21 @@ namespace WebcamARFoundation.Internal
             public override bool autoFocusRequested
             {
                 get => true;
-                set => Debug.Log($"autoFocusRequested: {value}");
+                set
+                {
+                    // Debug.Log($"autoFocusRequested: {value}");
+                }
             }
 
             public override Feature currentLightEstimation => Feature.AnyLightEstimation;
             public override Feature requestedLightEstimation
             {
                 get => Feature.AnyLightEstimation;
-                set => Debug.Log($"requestedLightEstimation: {value}");
+                set
+                {
+                    // Debug.Log($"requestedLightEstimation: {value}");
+                }
+
             }
 
             public override NativeArray<XRTextureDescriptor> GetTextureDescriptors(XRTextureDescriptor defaultDescriptor, Allocator allocator)

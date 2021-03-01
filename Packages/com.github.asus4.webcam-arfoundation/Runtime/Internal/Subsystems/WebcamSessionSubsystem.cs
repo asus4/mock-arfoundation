@@ -31,7 +31,7 @@ namespace WebcamARFoundation.Internal
                 supportsInstall = false,
                 supportsMatchFrameRate = false
             });
-            Debug.Log($"Register {ID} subsystem");
+            // Debug.Log($"Register {ID} subsystem");
 #endif // UNITY_EDITOR
         }
 
