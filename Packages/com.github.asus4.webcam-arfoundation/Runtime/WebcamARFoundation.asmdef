@@ -4,16 +4,11 @@
         "Unity.RenderPipelines.Core.Runtime",
         "Unity.RenderPipelines.Lightweight.Runtime",
         "Unity.RenderPipelines.Universal.Runtime",
-        "Unity.Mathematics",
         "Unity.XR.ARFoundation",
         "Unity.XR.ARSubsystems",
-        "Unity.XR.ARKit",
-        "Unity.XR.ARKit.FaceTracking",
         "Unity.XR.Management",
         "Unity.XR.Management.Editor",
-        "UnityEngine.XR.LegacyInputHelpers",
-        "UnityEngine.SpatialTracking",
-        "Klak.Ndi.Runtime"
+        "UnityEngine.XR.LegacyInputHelpers"
     ],
     "includePlatforms": [
         "Editor"
