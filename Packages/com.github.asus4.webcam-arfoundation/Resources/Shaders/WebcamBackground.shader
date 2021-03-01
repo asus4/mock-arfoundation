@@ -6,7 +6,13 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags
+        {
+            "Queue" = "Background"
+            "RenderType" = "Background"
+            "ForceNoShadowCasting" = "True"
+        }
+
         LOD 100
 
         Pass
@@ -40,7 +46,15 @@
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
                 float2 uv = TRANSFORM_TEX(v.uv, _MainTex);
-                o.uv = mul(float3(uv, 1.0f), _UnityDisplayTransform).xy;
+                uv = mul(float3(uv, 1.0f), _UnityDisplayTransform).xy;
+                if(_UnityDisplayTransform[0][0] < 0.5)
+                {
+                    uv.x += _UnityDisplayTransform[0][0] * 0.5;
+                }
+                else if(_UnityDisplayTransform[1][1] < 0.5) {
+                    uv.y += _UnityDisplayTransform[1][1] * 0.5;
+                }
+                o.uv = uv;
                 return o;
             }
 

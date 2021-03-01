@@ -90,16 +90,11 @@ namespace WebcamARFoundation.Internal
 #if MODULE_URP_ENABLED
                     else if (pipeline is UniversalRenderPipelineAsset)
                     {
-                        return "Unlit/ARKitURPBackground";
-                    }
-#elif MODULE_LWRP_ENABLED
-                    else if (pipeline is LightweightRenderPipelineAsset)
-                    {
-                        return "Unlit/ARKitLWRPBackground";
+                        return "Unlit/WebcamBackground";
                     }
 #endif
                     Debug.LogError($"{pipeline} is not supported in ARKit");
-                    return "Unlit/ARKitBackground";
+                    return "Unlit/WebcamBackground";
                 }
             }
 
@@ -116,16 +111,10 @@ namespace WebcamARFoundation.Internal
                     m_CameraMaterial = CreateCameraMaterial(ShaderName);
                 }
 
-                var devices = WebCamTexture.devices;
-                for (int i = 0; i < devices.Length; i++)
-                {
-                    Debug.Log($"web camera: {i} = {devices[i].name}");
-                }
-                string cameraName = WebCamTexture.devices[1].name;
-                webcam = new WebCamTexture(cameraName, 1920, 1080);
+                var setting = WebcamARFoundationSetting.Instance;
+                Debug.Log(setting);
+                webcam = setting.GetWebCamTexture();
                 webcam.Play();
-
-                Debug.Log("webcam started: name");
             }
 
             public override void Destroy()
@@ -252,7 +241,9 @@ namespace WebcamARFoundation.Internal
                     Quaternion.identity,
                     scale
                 );
-                return PUSH_MATRIX * trs * POP_MATRIX;
+                // ? offset doesn't work ?
+                // return PUSH_MATRIX * trs * POP_MATRIX;
+                return trs;
             }
 
         }

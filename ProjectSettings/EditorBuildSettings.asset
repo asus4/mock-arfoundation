@@ -12,7 +12,7 @@ EditorBuildSettings:
       type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1f9767992ec534550ae2529de8b54680,
       type: 2}
-    WebcamARFoundation.WebcamARFoundationSetting: {fileID: 11400000, guid: ddad30606543a4480a9393f208b491b5,
+    WebcamARFoundation.WebcamARFoundationSetting: {fileID: 11400000, guid: c800a7d0ed6734f18ab7680b3cdff426,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9f5b9c793d20f4f4f817a6b4f0007d93,
       type: 2}
