@@ -8,15 +8,15 @@ using UnityEditor;
 using UnityEditor.XR.Management;
 #endif
 
-using WebcamARFoundation.Internal;
+using MockARFoundation.Internal;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
 
 #if UNITY_EDITOR
     [XRSupportedBuildTarget(BuildTargetGroup.Standalone, new BuildTarget[] { BuildTarget.StandaloneOSX, BuildTarget.StandaloneWindows64 })]
 #endif
-    public class WebcamARFoundationLoader : XRLoaderHelper
+    public class MockARFoundationLoader : XRLoaderHelper
     {
         static List<XRSessionSubsystemDescriptor> s_SessionSubsystemDescriptors = new List<XRSessionSubsystemDescriptor>();
         static List<XRCameraSubsystemDescriptor> s_CameraSubsystemDescriptors = new List<XRCameraSubsystemDescriptor>();
@@ -26,12 +26,12 @@ namespace WebcamARFoundation
         {
             // if (!Application.isPlaying) return false;
 #if UNITY_EDITOR
-            CreateSubsystem<XRSessionSubsystemDescriptor, XRSessionSubsystem>(s_SessionSubsystemDescriptors, WebcamSessionSubsystem.ID);
-            CreateSubsystem<XRCameraSubsystemDescriptor, XRCameraSubsystem>(s_CameraSubsystemDescriptors, WebCameraSubsystem.ID);
+            CreateSubsystem<XRSessionSubsystemDescriptor, XRSessionSubsystem>(s_SessionSubsystemDescriptors, MockSessionSubsystem.ID);
+            CreateSubsystem<XRCameraSubsystemDescriptor, XRCameraSubsystem>(s_CameraSubsystemDescriptors, MockCameraSubsystem.ID);
             // CreateSubsystem<XRInputSubsystemDescriptor, XRInputSubsystem>(s_InputSubsystemDescriptors, "ARKit-Input");
 #endif
 
-            // Debug.Log("WebcamARFoundation Initialize");
+            // Debug.Log("MockARFoundation Initialize");
 
             var sessionSubsystem = GetLoadedSubsystem<XRSessionSubsystem>();
             if (sessionSubsystem == null)
@@ -64,7 +64,7 @@ namespace WebcamARFoundation
             DestroySubsystem<XRSessionSubsystem>();
 #endif
 
-            // Debug.Log("WebcamARFoundation Deinitialize");
+            // Debug.Log("MockARFoundation Deinitialize");
             return base.Deinitialize();
         }
     }

@@ -6,7 +6,7 @@ using UnityEditor;
 
 using Debug = UnityEngine.Debug;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
     [InitializeOnLoad]
     public static class PackagePatch
@@ -14,8 +14,8 @@ namespace WebcamARFoundation
         static PackagePatch()
         {
             string packagePath = Path.GetFullPath("Packages/com.unity.xr.arfoundation/Runtime/AR/");
-            string toolsPath = Path.GetFullPath("Packages/com.github.asus4.webcam-arfoundation/Tools/");
-            string scriptPath = Path.GetFullPath("Packages/com.github.asus4.webcam-arfoundation/Tools/apply_patch.sh");
+            string toolsPath = Path.GetFullPath("Packages/com.github.asus4.mock-arfoundation/Tools/");
+            string scriptPath = Path.GetFullPath("Packages/com.github.asus4.mock-arfoundation/Tools/apply_patch.sh");
 
             RunCommand(
                 scriptPath,

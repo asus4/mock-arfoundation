@@ -3,15 +3,21 @@ using UnityEngine.XR.Management;
 
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
+using MockARFoundation.Internal;
 
-
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
 
     [System.Serializable]
-    [XRConfigurationData("Webcam ARFoundation", "WebcamARFoundation.WebcamARFoundationSetting")]
-    public class WebcamARFoundationSetting : ScriptableObject
+    [XRConfigurationData("Mock AR Foundation", "MockARFoundation.MockARFoundationSetting")]
+    public class MockARFoundationSetting : ScriptableObject
     {
+        public enum Source
+        {
+            WebCamera,
+            Video,
+        }
+
         [System.Serializable]
         public struct Resolution
         {
@@ -45,25 +51,42 @@ namespace WebcamARFoundation
             }
         }
 
-        public static WebcamARFoundationSetting Instance { get; private set; }
+        [SerializeField]
+        private Source source = Source.WebCamera;
 
-        [WebcamName] public string preferredCamera = "";
-        public Resolution preferredResolution = new Resolution()
+        [SerializeField, WebcamName]
+        private string preferredCamera = "";
+
+        [SerializeField]
+        private Resolution preferredResolution = new Resolution()
         {
             width = 1920,
             height = 1080,
             refreshRate = 30,
         };
 
+        [SerializeField]
+        private string videoPath;
+
+        public Source CurrentSource => source;
+
+        public static MockARFoundationSetting Instance { get; private set; }
+
         private void OnEnable()
         {
             Instance = this;
         }
 
-        public WebCamTexture GetWebCamTexture()
+        public IMockCamera GetMockCamera()
         {
-            return new WebCamTexture(preferredCamera, preferredResolution.width, preferredResolution.height, preferredResolution.refreshRate);
+            switch (source)
+            {
+                case Source.WebCamera:
+                    return new WebCamMockCamera(preferredCamera, preferredResolution);
+                case Source.Video:
+                    return new VideoMockCamera(videoPath);
+            }
+            throw new System.NotImplementedException();
         }
-
     }
 }

@@ -8,6 +8,8 @@ EditorBuildSettings:
   m_configObjects:
     ARKitStream.ARKitStreamSetting: {fileID: 11400000, guid: ddad30606543a4480a9393f208b491b5,
       type: 2}
+    MockARFoundation.MockARFoundationSetting: {fileID: 11400000, guid: 17eda383cdde34d38951ef68752b9de9,
+      type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d5c1b74565b664c6398c297fd423f2d1,
       type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 1f9767992ec534550ae2529de8b54680,

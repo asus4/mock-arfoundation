@@ -5,9 +5,9 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEditor.XR.Management;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
-    public class ARKitStreamBuildProcessor : XRBuildHelper<WebcamARFoundationSetting>
+    public class ARKitStreamBuildProcessor : XRBuildHelper<MockARFoundationSetting>
     {
         public override string BuildSettingsKey => "com.github.asus4.webcam-arfoundation.setting";
 

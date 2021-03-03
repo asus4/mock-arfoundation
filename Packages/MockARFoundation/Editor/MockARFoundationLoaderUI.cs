@@ -6,15 +6,15 @@ using UnityEditor.XR.Management;
 
 using UnityEngine;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
-    [XRCustomLoaderUI("WebcamARFoundation.WebcamARFoundationLoader", BuildTargetGroup.Standalone)]
-    public class WebcamARFoundationLoaderUI : IXRCustomLoaderUI
+    [XRCustomLoaderUI("MockARFoundation.MockARFoundationLoader", BuildTargetGroup.Standalone)]
+    public class MockARFoundationLoaderUI : IXRCustomLoaderUI
     {
 
         struct Content
         {
-            public static readonly GUIContent k_LoaderName = new GUIContent("Webcam AR Foundation");
+            public static readonly GUIContent k_LoaderName = new GUIContent("Mock AR Foundation");
         }
 
         #region IXRCustomLoaderUI Implementation

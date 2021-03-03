@@ -13,15 +13,15 @@ using UnityEngine.XR.ARSubsystems;
 
 
 
-namespace WebcamARFoundation.Internal
+namespace MockARFoundation.Internal
 {
     [Preserve]
-    public sealed class WebCameraSubsystem : XRCameraSubsystem
+    public sealed class MockCameraSubsystem : XRCameraSubsystem
     {
-        public const string ID = "Webcam-subsystem";
+        public const string ID = "Mock-subsystem";
 
 #if !UNITY_2020_2_OR_NEWER
-        protected override Provider CreateProvider() => new WebcamProvider();
+        protected override Provider CreateProvider() => new MockProvider();
 #endif
 
 
@@ -35,10 +35,10 @@ namespace WebcamARFoundation.Internal
             {
                 id = ID,
 #if UNITY_2020_2_OR_NEWER
-                providerType = typeof(WebCameraSubsystem.WebcamProvider),
-                subsystemTypeOverride = typeof(WebCameraSubsystem),
+                providerType = typeof(MockCameraSubsystem.MockProvider),
+                subsystemTypeOverride = typeof(MockCameraSubsystem),
 #else
-                implementationType = typeof(WebCameraSubsystem),
+                implementationType = typeof(MockCameraSubsystem),
 #endif
 
                 supportsAverageBrightness = false,
@@ -68,11 +68,11 @@ namespace WebcamARFoundation.Internal
 #endif // UNITY_EDITOR
         }
 
-        class WebcamProvider : Provider
+        class MockProvider : Provider
         {
             static readonly int _TEXTURE_MAIN = Shader.PropertyToID("_MainTex");
 
-            private WebCamTexture webcam;
+            private IMockCamera mockCamera;
             private Material m_CameraMaterial;
             public override Material cameraMaterial => m_CameraMaterial;
 
@@ -98,7 +98,7 @@ namespace WebcamARFoundation.Internal
                 }
             }
 
-            public WebcamProvider()
+            public MockProvider()
             {
                 // m_CameraMaterial = CreateCameraMaterial(ShaderName);
             }
@@ -111,15 +111,14 @@ namespace WebcamARFoundation.Internal
                     m_CameraMaterial = CreateCameraMaterial(ShaderName);
                 }
 
-                var setting = WebcamARFoundationSetting.Instance;
-                webcam = setting.GetWebCamTexture();
-                webcam.Play();
+                var setting = MockARFoundationSetting.Instance;
+                mockCamera = setting.GetMockCamera();
             }
 
             public override void Destroy()
             {
-                webcam?.Stop();
-                webcam = null;
+                mockCamera?.Dispose();
+                mockCamera = null;
 
                 if (m_CameraMaterial != null)
                 {
@@ -142,10 +141,7 @@ namespace WebcamARFoundation.Internal
 
             public override bool TryGetFrame(XRCameraParams cameraParams, out XRCameraFrame cameraFrame)
             {
-
-                if (!Application.isPlaying
-                    || webcam == null
-                    || webcam.width <= 16)
+                if (!Application.isPlaying ||!mockCamera.isPrepared)
                 {
                     cameraFrame = default(XRCameraFrame);
                     return false;
@@ -158,7 +154,7 @@ namespace WebcamARFoundation.Internal
 
 
                 Matrix4x4 displayMatrix = GetDisplayTransform(
-                    (float)webcam.width / (float)webcam.height,
+                    (float)mockCamera.texture.width / (float)mockCamera.texture.height,
                     (float)Screen.width / (float)Screen.height
                 );
 
@@ -213,18 +209,13 @@ namespace WebcamARFoundation.Internal
 
             public override NativeArray<XRTextureDescriptor> GetTextureDescriptors(XRTextureDescriptor defaultDescriptor, Allocator allocator)
             {
-                if (!Application.isPlaying)
-                {
-                    return new NativeArray<XRTextureDescriptor>(0, allocator);
-                }
-
-                if (webcam == null || webcam.width <= 16)
+                if (!Application.isPlaying || !mockCamera.isPrepared)
                 {
                     return new NativeArray<XRTextureDescriptor>(0, allocator);
                 }
 
                 var arr = new NativeArray<XRTextureDescriptor>(1, allocator);
-                arr[0] = new TextureDescriptor(webcam, _TEXTURE_MAIN);
+                arr[0] = new TextureDescriptor(mockCamera.texture, _TEXTURE_MAIN);
 
                 return arr;
             }

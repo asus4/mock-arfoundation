@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEditor;
 #endif // UNITY_EDITOR
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
 
 #if UNITY_EDITOR

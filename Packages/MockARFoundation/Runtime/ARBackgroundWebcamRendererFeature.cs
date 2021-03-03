@@ -9,7 +9,7 @@ using ScriptableRendererFeature = UnityEngine.ScriptableObject;
 #endif
 using UnityEngine.XR.ARFoundation;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
     /// <summary>
     /// A simple copy of ARBackgroundRendererFeature but invert #if UNITY_EDITOR

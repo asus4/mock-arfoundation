@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.github.asus4.webcam-arfoundation": {
-      "version": "file:com.github.asus4.webcam-arfoundation",
+    "com.github.asus4.mock-arfoundation": {
+      "version": "file:MockARFoundation",
       "depth": 0,
       "source": "embedded",
       "dependencies": {

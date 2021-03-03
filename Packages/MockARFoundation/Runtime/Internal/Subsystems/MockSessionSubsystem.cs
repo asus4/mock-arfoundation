@@ -3,16 +3,16 @@ using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.XR.ARSubsystems;
 
-namespace WebcamARFoundation.Internal
+namespace MockARFoundation.Internal
 {
     [Preserve]
-    public class WebcamSessionSubsystem : XRSessionSubsystem
+    public class MockSessionSubsystem : XRSessionSubsystem
     {
-        public const string ID = "Webcam-Session";
+        public const string ID = "Mock-Session";
         // protected override Provider CreateProvider() => new ARKitRemoteProvider();
 
 #if !UNITY_2020_2_OR_NEWER
-        protected override Provider CreateProvider() => new WebcamProvider();
+        protected override Provider CreateProvider() => new MockProvider();
 #endif
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -23,10 +23,10 @@ namespace WebcamARFoundation.Internal
             {
                 id = ID,
 #if UNITY_2020_2_OR_NEWER
-                providerType = typeof(WebcamSessionSubsystem.WebcamProvider),
-                subsystemTypeOverride = typeof(WebcamSessionSubsystem),
+                providerType = typeof(MockSessionSubsystem.MockProvider),
+                subsystemTypeOverride = typeof(MockSessionSubsystem),
 #else
-                subsystemImplementationType = typeof(WebcamSessionSubsystem),
+                subsystemImplementationType = typeof(MockSessionSubsystem),
 #endif
                 supportsInstall = false,
                 supportsMatchFrameRate = false
@@ -35,7 +35,7 @@ namespace WebcamARFoundation.Internal
 #endif // UNITY_EDITOR
         }
 
-        class WebcamProvider : Provider
+        class MockProvider : Provider
         {
             public override Promise<SessionAvailability> GetAvailabilityAsync()
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.XR.ARSubsystems;
 
-namespace WebcamARFoundation.Internal
+namespace MockARFoundation.Internal
 {
     /// <summary>
     /// HACK: Need the unsafe struct cast

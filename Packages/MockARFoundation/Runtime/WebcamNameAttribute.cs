@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
     public class WebcamNameAttribute : PropertyAttribute
     {

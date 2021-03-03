@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.XR.Management.Metadata;
 
-namespace WebcamARFoundation
+namespace MockARFoundation
 {
-    class WebcamARFoundationPackage : IXRPackage
+    class MockARFoundationPackage : IXRPackage
     {
 
-        class WebcamARFoundationLoaderMetadata : IXRLoaderMetadata
+        class MockARFoundationLoaderMetadata : IXRLoaderMetadata
         {
             public string loaderName { get; set; }
             public string loaderType { get; set; }
             public List<BuildTargetGroup> supportedBuildTargets { get; set; }
         }
 
-        class WebcamARFoundationPackageMetadata : IXRPackageMetadata
+        class MockARFoundationPackageMetadata : IXRPackageMetadata
         {
             public string packageName { get; set; }
             public string packageId { get; set; }
@@ -24,17 +24,17 @@ namespace WebcamARFoundation
             public List<IXRLoaderMetadata> loaderMetadata { get; set; }
         }
 
-        private static IXRPackageMetadata s_Metadata = new WebcamARFoundationPackageMetadata()
+        private static IXRPackageMetadata s_Metadata = new MockARFoundationPackageMetadata()
         {
-            packageName = "Webcam AR Foundation",
-            packageId = "com.github.asus4.webcam-arfoundation",
-            settingsType = typeof(WebcamARFoundationSetting).FullName,
+            packageName = "Mock AR Foundation",
+            packageId = "com.github.asus4.mock-arfoundation",
+            settingsType = typeof(MockARFoundationSetting).FullName,
             loaderMetadata = new List<IXRLoaderMetadata>()
             {
-                new WebcamARFoundationLoaderMetadata()
+                new MockARFoundationLoaderMetadata()
                 {
-                    loaderName = "WebcamARFoundationLoader",
-                    loaderType = typeof(WebcamARFoundationLoader).FullName,
+                    loaderName = "MockARFoundationLoader",
+                    loaderType = typeof(MockARFoundationLoader).FullName,
                     supportedBuildTargets = new List<BuildTargetGroup>()
                     {
                         BuildTargetGroup.Standalone,

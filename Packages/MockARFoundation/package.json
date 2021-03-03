@@ -1,13 +1,13 @@
 {
-  "name": "com.github.asus4.webcam-arfoundation",
-  "displayName": "Webcam AR Foundation",
+  "name": "com.github.asus4.mock-arfoundation",
+  "displayName": "Mock AR Foundation",
   "author": "Koki Ibukuro",
   "dependencies": {
     "com.unity.xr.arfoundation": "4.1.5",
     "com.unity.xr.arsubsystems": "4.1.5",
     "com.unity.xr.legacyinputhelpers": "2.0.8"
   },
-  "description": "AR foundation devkit",
+  "description": "Mock for AR foundation",
   "keywords": [
     "unity"
   ],
