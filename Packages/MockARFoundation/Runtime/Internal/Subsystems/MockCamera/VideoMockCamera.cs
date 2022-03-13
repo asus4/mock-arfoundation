@@ -24,6 +24,7 @@ namespace MockARFoundation.Internal
             player.skipOnDrop = true;
             player.renderMode = VideoRenderMode.APIOnly;
             player.audioOutputMode = VideoAudioOutputMode.None;
+            player.SetDirectAudioMute(0, true);
             player.playbackSpeed = 1;
         }
 
