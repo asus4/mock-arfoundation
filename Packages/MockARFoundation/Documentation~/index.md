@@ -1,6 +1,6 @@
 # Mock AR Foundation
 
-Mock AR Foundation is a simple mocking system for AR foundation. It simurates the AR camera in Editor.
+Mock AR Foundation is a simple mocking system for AR foundation. It simulates the AR camera in Editor.
 
 ## How to install
 

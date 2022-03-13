@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Video;
 
 namespace MockARFoundation.Internal
@@ -10,7 +8,7 @@ namespace MockARFoundation.Internal
         public Texture texture => player.texture;
         public bool isPrepared => player.isPrepared;
 
-        private VideoPlayer player;
+        private readonly VideoPlayer player;
 
         public VideoMockCamera(string videoPath)
         {
@@ -26,6 +24,7 @@ namespace MockARFoundation.Internal
             player.skipOnDrop = true;
             player.renderMode = VideoRenderMode.APIOnly;
             player.audioOutputMode = VideoAudioOutputMode.None;
+            player.SetDirectAudioMute(0, true);
             player.playbackSpeed = 1;
         }
 
@@ -34,6 +33,5 @@ namespace MockARFoundation.Internal
             player.Stop();
             Object.DestroyImmediate(player.gameObject);
         }
-
     }
 }

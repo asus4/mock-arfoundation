@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MockARFoundation.Internal
 {
@@ -28,7 +26,7 @@ namespace MockARFoundation.Internal
         {
             var devices = WebCamTexture.devices;
 
-            // Found the exacty same name
+            // Found the exactly same name
             foreach (var device in devices)
             {
                 if (device.name == preferredName)

@@ -4,11 +4,8 @@ using Unity.Collections;
 using UnityEngine.Rendering;
 #if MODULE_URP_ENABLED
 using UnityEngine.Rendering.Universal;
-#elif MODULE_LWRP_ENABLED
-using UnityEngine.Rendering.LWRP;
 #endif
 using UnityEngine.Scripting;
-using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 
@@ -141,7 +138,7 @@ namespace MockARFoundation.Internal
 
             public override bool TryGetFrame(XRCameraParams cameraParams, out XRCameraFrame cameraFrame)
             {
-                if (!Application.isPlaying ||!mockCamera.isPrepared)
+                if (!Application.isPlaying || !mockCamera.isPrepared)
                 {
                     cameraFrame = default(XRCameraFrame);
                     return false;
@@ -154,8 +151,8 @@ namespace MockARFoundation.Internal
 
 
                 Matrix4x4 displayMatrix = GetDisplayTransform(
-                    (float)mockCamera.texture.width / (float)mockCamera.texture.height,
-                    (float)Screen.width / (float)Screen.height
+                    (float)mockCamera.texture.width / mockCamera.texture.height,
+                    (float)Screen.width / Screen.height
                 );
 
                 cameraFrame = (XRCameraFrame)new CameraFrame()
@@ -164,9 +161,7 @@ namespace MockARFoundation.Internal
                     averageBrightness = 0,
                     averageColorTemperature = 0,
                     colorCorrection = default(Color),
-                    // projectionMatrix = remoteFrame.projectionMatrix,
                     projectionMatrix = Matrix4x4.identity,
-                    // displayMatrix = remoteFrame.displayMatrix,
                     displayMatrix = displayMatrix,
                     trackingState = TrackingState.Tracking,
                     nativePtr = new IntPtr(0),
@@ -204,7 +199,6 @@ namespace MockARFoundation.Internal
                 {
                     // Debug.Log($"requestedLightEstimation: {value}");
                 }
-
             }
 
             public override NativeArray<XRTextureDescriptor> GetTextureDescriptors(XRTextureDescriptor defaultDescriptor, Allocator allocator)
@@ -220,32 +214,29 @@ namespace MockARFoundation.Internal
                 return arr;
             }
 
-
-            private static readonly Matrix4x4 PUSH_MATRIX = Matrix4x4.Translate(new Vector3(0.5f, 0.5f, 0));
-            private static readonly Matrix4x4 POP_MATRIX = Matrix4x4.Translate(new Vector3(-0.5f, -0.5f, 0));
             private static Matrix4x4 GetDisplayTransform(float srcAspect, float dstAspect)
             {
                 Vector3 scale;
+                Vector3 offset;
+
                 if (srcAspect > dstAspect)
                 {
                     float s = dstAspect / srcAspect;
+                    offset = new Vector3((1f - s) / 2f, 0, 0);
                     scale = new Vector3(s, 1, 1);
                 }
                 else
                 {
                     float s = srcAspect / dstAspect;
+                    offset = new Vector3(0, (1f - s) / 2f, 0);
                     scale = new Vector3(1, s, 1);
                 }
-                Matrix4x4 trs = Matrix4x4.TRS(
-                    Vector3.zero,
+                return Matrix4x4.TRS(
+                    offset,
                     Quaternion.identity,
                     scale
                 );
-                // ? offset doesn't work ?
-                // return PUSH_MATRIX * trs * POP_MATRIX;
-                return trs;
             }
-
         }
     }
 }
