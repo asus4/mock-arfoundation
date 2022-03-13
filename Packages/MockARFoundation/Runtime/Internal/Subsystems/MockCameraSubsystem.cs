@@ -138,7 +138,7 @@ namespace MockARFoundation.Internal
 
             public override bool TryGetFrame(XRCameraParams cameraParams, out XRCameraFrame cameraFrame)
             {
-                if (!Application.isPlaying ||!mockCamera.isPrepared)
+                if (!Application.isPlaying || !mockCamera.isPrepared)
                 {
                     cameraFrame = default(XRCameraFrame);
                     return false;
@@ -151,8 +151,8 @@ namespace MockARFoundation.Internal
 
 
                 Matrix4x4 displayMatrix = GetDisplayTransform(
-                    (float)mockCamera.texture.width / (float)mockCamera.texture.height,
-                    (float)Screen.width / (float)Screen.height
+                    (float)mockCamera.texture.width / mockCamera.texture.height,
+                    (float)Screen.width / Screen.height
                 );
 
                 cameraFrame = (XRCameraFrame)new CameraFrame()
@@ -217,22 +217,25 @@ namespace MockARFoundation.Internal
             private static Matrix4x4 GetDisplayTransform(float srcAspect, float dstAspect)
             {
                 Vector3 scale;
+                Vector3 offset;
+
                 if (srcAspect > dstAspect)
                 {
                     float s = dstAspect / srcAspect;
+                    offset = new Vector3((1f - s) / 2f, 0, 0);
                     scale = new Vector3(s, 1, 1);
                 }
                 else
                 {
                     float s = srcAspect / dstAspect;
+                    offset = new Vector3(0, (1f - s) / 2f, 0);
                     scale = new Vector3(1, s, 1);
                 }
-                Matrix4x4 trs = Matrix4x4.TRS(
-                    Vector3.zero,
+                return Matrix4x4.TRS(
+                    offset,
                     Quaternion.identity,
                     scale
                 );
-                return trs;
             }
         }
     }

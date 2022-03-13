@@ -45,16 +45,8 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-                float2 uv = TRANSFORM_TEX(v.uv, _MainTex);
-                uv = mul(float3(uv, 1.0f), _UnityDisplayTransform).xy;
-                if(_UnityDisplayTransform[0][0] < 0.5)
-                {
-                    uv.x += _UnityDisplayTransform[0][0] * 0.5;
-                }
-                else if(_UnityDisplayTransform[1][1] < 0.5) {
-                    uv.y += _UnityDisplayTransform[1][1] * 0.5;
-                }
-                o.uv = uv;
+                float2 uv = mul(float3(v.uv, 1.0f), _UnityDisplayTransform).xy;
+                o.uv = uv + float2(_UnityDisplayTransform[0].w, _UnityDisplayTransform[1].w);
                 return o;
             }
 
