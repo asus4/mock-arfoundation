@@ -4,11 +4,8 @@ using Unity.Collections;
 using UnityEngine.Rendering;
 #if MODULE_URP_ENABLED
 using UnityEngine.Rendering.Universal;
-#elif MODULE_LWRP_ENABLED
-using UnityEngine.Rendering.LWRP;
 #endif
 using UnityEngine.Scripting;
-using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 
@@ -164,9 +161,7 @@ namespace MockARFoundation.Internal
                     averageBrightness = 0,
                     averageColorTemperature = 0,
                     colorCorrection = default(Color),
-                    // projectionMatrix = remoteFrame.projectionMatrix,
                     projectionMatrix = Matrix4x4.identity,
-                    // displayMatrix = remoteFrame.displayMatrix,
                     displayMatrix = displayMatrix,
                     trackingState = TrackingState.Tracking,
                     nativePtr = new IntPtr(0),
@@ -204,7 +199,6 @@ namespace MockARFoundation.Internal
                 {
                     // Debug.Log($"requestedLightEstimation: {value}");
                 }
-
             }
 
             public override NativeArray<XRTextureDescriptor> GetTextureDescriptors(XRTextureDescriptor defaultDescriptor, Allocator allocator)
@@ -220,9 +214,6 @@ namespace MockARFoundation.Internal
                 return arr;
             }
 
-
-            private static readonly Matrix4x4 PUSH_MATRIX = Matrix4x4.Translate(new Vector3(0.5f, 0.5f, 0));
-            private static readonly Matrix4x4 POP_MATRIX = Matrix4x4.Translate(new Vector3(-0.5f, -0.5f, 0));
             private static Matrix4x4 GetDisplayTransform(float srcAspect, float dstAspect)
             {
                 Vector3 scale;
@@ -241,11 +232,8 @@ namespace MockARFoundation.Internal
                     Quaternion.identity,
                     scale
                 );
-                // ? offset doesn't work ?
-                // return PUSH_MATRIX * trs * POP_MATRIX;
                 return trs;
             }
-
         }
     }
 }
