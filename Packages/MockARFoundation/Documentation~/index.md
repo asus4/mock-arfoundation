@@ -5,7 +5,7 @@ Mock AR Foundation is a simple mocking system for AR foundation. It simulates th
 ## How to install
 
 Add the following git URL from Unity package manager:  
-`https://github.com/asus4/mock-arfoundation.git?path=Packages/MockARFoundation#0.2.0`
+`https://github.com/asus4/mock-arfoundation.git?path=Packages/MockARFoundation#0.4.0`
 
 ## How to setup
 
