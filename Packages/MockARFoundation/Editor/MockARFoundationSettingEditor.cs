@@ -39,7 +39,7 @@ namespace MockARFoundation
                 EditorGUILayout.PropertyField(videoPath);
                 if (GUILayout.Button("Load Video"))
                 {
-                    string path = EditorUtility.OpenFilePanelWithFilters("Selecte the mock video", "", new string[] { "Vidoe files", "mp4,mov", "All files", "*" });
+                    string path = EditorUtility.OpenFilePanelWithFilters("Select the mock video", "", new string[] { "Video files", "mp4,mov", "All files", "*" });
                     if (!string.IsNullOrWhiteSpace(path))
                     {
                         videoPath.stringValue = path;
