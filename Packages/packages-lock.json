@@ -5,9 +5,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.xr.arfoundation": "4.1.9",
-        "com.unity.xr.arsubsystems": "4.1.9",
-        "com.unity.xr.legacyinputhelpers": "2.0.8"
+        "com.unity.xr.arfoundation": "4.2.2",
+        "com.unity.xr.arsubsystems": "4.2.2"
       }
     },
     "com.unity.burst": {
@@ -180,7 +179,7 @@
     },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.9",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.vr": "1.0.0",
