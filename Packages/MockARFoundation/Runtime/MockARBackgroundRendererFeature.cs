@@ -14,7 +14,7 @@ namespace MockARFoundation
     /// <summary>
     /// A simple copy of ARBackgroundRendererFeature but invert #if UNITY_EDITOR
     /// </summary>
-    public class ARBackgroundWebcamRendererFeature : ScriptableRendererFeature
+    public class MockARBackgroundRendererFeature : ScriptableRendererFeature
     {
 #if MODULE_URP_ENABLED || MODULE_LWRP_ENABLED
         /// <summary>

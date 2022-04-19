@@ -1,10 +1,10 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Scripting;
-using UnityEngine.XR.ARSubsystems;
-
-namespace MockARFoundation.Internal
+﻿namespace MockARFoundation.Internal
 {
+    using UnityEngine;
+    using UnityEngine.Scripting;
+    using UnityEngine.XR.ARSubsystems;
+
+
     [Preserve]
     public class MockSessionSubsystem : XRSessionSubsystem
     {
