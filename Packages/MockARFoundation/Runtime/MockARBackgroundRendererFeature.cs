@@ -57,7 +57,7 @@ namespace MockARFoundation
         /// <summary>
         /// Add the background rendering pass when rendering a game camera with an enabled AR camera background component.
         /// </summary>
-        /// <param name="renderer">The sriptable renderer in which to enqueue the render pass.</param>
+        /// <param name="renderer">The scriptable renderer in which to enqueue the render pass.</param>
         /// <param name="renderingData">Additional rendering data about the current state of rendering.</param>
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
@@ -83,7 +83,7 @@ namespace MockARFoundation
         class CustomRenderPass : ScriptableRenderPass
         {
             /// <summary>
-            /// The name for the custom render pass which will be display in graphics debugging tools.
+            /// The name for the custom render pass which will display in graphics debugging tools.
             /// </summary>
             const string k_CustomRenderPassName = "AR Background Pass (URP)";
 
@@ -119,7 +119,7 @@ namespace MockARFoundation
             }
 
             /// <summary>
-            /// Setup the background render pass.
+            /// Set up the background render pass.
             /// </summary>
             /// <param name="backgroundMesh">The mesh used for rendering the device background.</param>
             /// <param name="backgroundMaterial">The material used for rendering the device background.</param>
